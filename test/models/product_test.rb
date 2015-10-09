@@ -54,20 +54,20 @@ class ProductTest < ActiveSupport::TestCase
                             image_url: "image.png",
                             price: 1
                             )
+  end
   test "image url" do
     ok = %w{fred.gif fred.jpg fred.png FRED.JPG FRED.JPG FRED.PNG http://a.b.c/x/y/z/fred.gif }
 
     bad = %w{fred.doc fred.gif/more fred.gif.more fred.xls fred.csv fred.mbp fred.js}
 
-    ok.each.do |name|
+    ok.each do |name|
       assert new_product(name).valid?, "#{name} should be valid"
     end
 
     bad.each do |name|
       assert new_product(name).invalid?, "#{name} shouldn't be valid"
     end
-
   end
-
+end 
 
 end
